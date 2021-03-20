@@ -1,0 +1,95 @@
+{% extends "base/base.html" %}
+{% block title %} Details-Course | CleaverCode {% endblock %}
+{% block content %}
+
+
+
+	<!-- Page info -->
+	<div class="page-info-section set-bg" data-setbg="/static/img/page-bg/2.jpg">
+		<div class="container">
+			<div class="site-breadcrumb">
+				<a href="#">Home</a>
+				<span>Courses</span>
+			</div>
+		</div>
+	</div>
+	<!-- Page info end -->
+
+
+	<!-- search section -->
+	<section class="search-section ss-other-page">
+		<div class="container">
+			<div class="search-warp">
+				<div class="section-title text-white">
+					<h2><span>Search your course</span></h2>
+				</div>
+				<div class="row">
+					<div class="col-lg-10 offset-lg-1">
+						<!-- search form -->
+						<form class="course-search-form">
+							<input type="text" placeholder="Course">
+							<input type="text" class="last-m" placeholder="Category">
+							<button class="site-btn btn-dark">Search Couse</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- search section end -->
+<br>
+<br>
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+
+                {% for lesson in object.lessons %}
+                    <div class="list-group">
+                      {{forloop.counter}} | <a href="{{lesson.get_absolute_url}}" class="list-group-item list-group-item-action">{{lesson.title}}</a>
+                    </div>
+                {% endfor %}
+
+                {% for lesson_title in obj %}
+                    <div class="list-group">
+                      <a href="{{lesson_title.get_absolute_url}}" class="list-group-item list-group-item-action">{{lesson_title.title}}</a>
+                    </div>
+                {% endfor %}
+            </div>
+
+
+            <div class="col-8">
+
+                {% if object.video_url %}
+                    <iframe width="727" height="409" src="{{ object.video_url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                {% else %}
+					<iframe width="727" height="409" src="https://www.youtube.com/embed/3z0XtYwly4w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<pre>
+                        <code>
+                            {{ object.sourse_code }}
+                        </code>
+                    </pre>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+	<!-- banner section -->
+	<section class="banner-section spad">
+		<div class="container">
+			<div class="section-title mb-0 pb-2">
+				<h2>Join Our Community Now!</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris scelerisque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus.</p>
+			</div>
+			<div class="text-center pt-5">
+				<a href="#" class="site-btn">Register Now</a>
+			</div>
+		</div>
+	</section>
+	<!-- banner section end -->
+
+
+{% endblock %}
